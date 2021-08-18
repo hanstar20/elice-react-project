@@ -6,6 +6,7 @@ import QuestionBox from './QuestionBox';
 const Example = () => {
 
     const sample = useSelector((state) => state.question[0])
+    const answer = useSelector((state) => state.answers.find((answer) => answer.id === '0'))
 
     return (
         <div>
@@ -17,11 +18,16 @@ const Example = () => {
                     questionNum="0" 
                     question={sample.question} 
                     answer01={sample.answer01} 
-                    answer02={sample.answer02} 
+                    answer02={sample.answer02}
+                    answer03={sample.answer03}
+                    answer04={sample.answer04}
                 />
             </div>
-            <Link to="/"><button>이전</button></Link>
-            <Link to="/test/1"><button>다음</button></Link>
+            <Link to="/test/1">
+                <button
+                    disabled={answer === undefined ? true : false }      
+                >검사시작</button>
+            </Link>
         </div>
     )
 }

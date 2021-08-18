@@ -1,14 +1,24 @@
 //action.js
-export const setName = (name) => ({
-    type: "SET_NAME",
+export const disSetName = (name) => ({
+    type: "userInfo/name",
     name,
 });
 
+export const disSetGender = (gender) => ({
+    type: "userInfo/gender",
+    gender,
+});
+
 export const getQuestion = (questions) => ({
-    type: "GET_QUSETION",
+    type: "test/question",
     questions,
 })
 
+export const disSetAnswer = (answer, index) => ({
+    type: "test/answer",
+    answer,
+    index,
+})
 
 //reducer.js
 // case "INCREMENT": 
