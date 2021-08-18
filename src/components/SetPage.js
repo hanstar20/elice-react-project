@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import GatherInfo from './GatherInfo';
 import Example from './Example';
 import PsyTest from './PsyTest';
+import Finish from './Finish';
+import Result from './Result';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -49,6 +51,12 @@ const SetPage = () => {
                 </Route>
                 <Route path="/test/6">
                     <PsyTest page="6" />
+                </Route>
+                <Route path="/finish">
+                    <Finish />
+                </Route>
+                <Route path="/result">
+                    <Result />
                 </Route>
             </Switch>
         </BrowserRouter>

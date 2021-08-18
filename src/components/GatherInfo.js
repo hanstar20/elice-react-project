@@ -20,6 +20,7 @@ const GatherInfo = () => {
         dispatch(disSetName(name))
         dispatch(disSetGender(gender))
     }
+
     return (
         <div>
             <h1>직업가치검사</h1>
@@ -27,7 +28,6 @@ const GatherInfo = () => {
                 이름<input type="text" onChange={handleChangeName} value={name}/>
                 <p><input type="radio" value="male" name="gender" onChange={handleChangeGender} />남자</p>
                 <p><input type="radio" value="female" name="gender" onChange={handleChangeGender} />여자</p>
-                {gender}
                 <Link to="/example" >
                     <button 
                         disabled={name !== "" && gender !== "" ? false : true} 

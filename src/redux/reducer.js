@@ -2,7 +2,7 @@ const initState = {
     name : "",
     gender: "",
     question: [],
-    answers: [],
+    answers: Array.from({length: 29}, () => 'None')
 }
 
 // reducer 만들기
@@ -24,29 +24,22 @@ const Reducer = (state = initState, action) => {
                     question: action.questions
                 }
             case "test/answer": 
-                const newAnswer = {
-                    id: action.index,
-                    answer: action.answer
-                }
-                if (state.answers.find((answer)=> answer.id === action.index) !== undefined) {
-                    return {
-                        ...state,
-                        answers: [
-                            ...state.answers.filter((answer) => answer.id !== action.index),
-                            newAnswer
-                        ]
-                    }
-                } else {
-                    return {
-                        ...state,
-                        answers: [
-                            ...state.answers,
-                            {
-                                id: action.index,
-                                answer: action.answer
+                return {
+                    ...state,
+                    answers: state.answers.map((answer, index) => {
+                            if (String(index) === action.index) {
+                                return action.answer
+                            } else {
+                                return answer
                             }
-                        ]
-                    }
+                        })
+                }
+            case "init": 
+                return {
+                    name : "",
+                    gender: "",
+                    answer: Array.from({length: 29}, () => 'None'),
+                    question: []
                 }
             // 케이스에 해당하지 않을때 반환할 기본값
             // return state : 아무것도 변경되지 않는다는 뜻

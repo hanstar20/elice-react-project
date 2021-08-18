@@ -2,7 +2,7 @@ import React  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { disSetAnswer } from '../redux/action';
 
-const QuestionBox = ({questionNum, question, answer01, answer02, answer03, answer04}) => {
+const QuestionBox = ({questionNum, question, answer01, answer02, answer03, answer04, answerScore01, answerScore02}) => {
     const dispatch = useDispatch();
     const answers = useSelector((state) => state.answers)
 
@@ -11,10 +11,10 @@ const QuestionBox = ({questionNum, question, answer01, answer02, answer03, answe
     }
     
     const ExampleDetail = () => {
-        const checked = answers.find((answer)=> answer.id === questionNum);
-        if (checked && checked.answer == '1'){
+        const checked = answers[questionNum];
+        if (checked === answerScore01){
             return <p>{answer01}: {answer03}</p>
-        } else if (checked && checked.answer == '2') {
+        } else if (checked === answerScore02) {
             return <p>{answer02}: {answer04}</p>
         } else {
             return <></>
@@ -27,22 +27,16 @@ const QuestionBox = ({questionNum, question, answer01, answer02, answer03, answe
             </h3>
             <input 
                 type="radio" 
-                value="1"
+                value={answerScore01}
                 name={`Question-${questionNum}`} 
-                checked={
-                    answers.find((answer)=> answer.id === questionNum) && 
-                    answers.find((answer)=> answer.id === questionNum).answer === "1" ? 
-                    true : false} 
+                checked={answers[questionNum] === answerScore01 ? true : false} 
                 onChange={handleChange}
             /> {answer01}
             <input 
                 type="radio" 
-                value="2"
+                value={answerScore02}
                 name={`Question-${questionNum}`} 
-                checked={
-                    answers.find((answer)=> answer.id === questionNum) && 
-                    answers.find((answer)=> answer.id === questionNum).answer === "2" ? 
-                    true : false}
+                checked={answers[questionNum] === answerScore02 ? true : false}
                 onChange={handleChange}
             /> {answer02}
             {ExampleDetail()}

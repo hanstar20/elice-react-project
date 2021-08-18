@@ -20,6 +20,10 @@ export const disSetAnswer = (answer, index) => ({
     index,
 })
 
+export const init = () => ({
+    type: "init"
+})
+
 //reducer.js
 // case "INCREMENT": 
 //    return {
