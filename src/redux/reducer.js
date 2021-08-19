@@ -5,6 +5,10 @@ const initState = {
     answers: Array.from({ length: 29 }, () => 'None'),
     result: {
         graph: [],
+        jobs: [],
+        majors: [],
+        maxValues: [],
+        minValues: [],
     },
 };
 
@@ -37,14 +41,30 @@ const Reducer = (state = initState, action) => {
                     }
                 }),
             };
+        case 'test/result':
+            return {
+                ...state,
+                result: {
+                    ...state.result,
+                    graph: action.graph,
+                    jobs: action.jobs,
+                    majors: action.majors,
+                    maxValues: action.maxValues,
+                    minValues: action.minValues,
+                },
+            };
         case 'init':
             return {
+                ...state,
                 name: '',
                 gender: '',
-                answer: Array.from({ length: 29 }, () => 'None'),
-                question: [],
+                answers: Array.from({ length: 29 }, () => 'None'),
                 result: {
                     graph: [],
+                    jobs: [],
+                    majors: [],
+                    maxValues: [],
+                    minValues: [],
                 },
             };
         // 케이스에 해당하지 않을때 반환할 기본값

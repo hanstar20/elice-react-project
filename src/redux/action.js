@@ -20,6 +20,15 @@ export const disSetAnswer = (answer, index) => ({
     index,
 });
 
+export const setResult = (graph, jobs, majors, maxValues, minValues) => ({
+    type: 'test/result',
+    graph,
+    jobs,
+    majors,
+    maxValues,
+    minValues,
+});
+
 export const init = () => ({
     type: 'init',
 });

@@ -6,20 +6,17 @@ import Finish from './Finish';
 import Result from './Result';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import { getQuestion } from '../redux/action';
-
-const API_KEY = 'c4115cd15ddcb05d8a6533b287705c6f';
-const QESTREN_SEQ = '6';
+import { GetQuestionAPI } from '../api/CareerAPI';
 
 const SetPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        async function fetch() {
-            const response = await axios.get(`https://www.career.go.kr/inspct/openapi/test/questions?apikey=${API_KEY}&q=${QESTREN_SEQ}`);
-            dispatch(getQuestion(response.data.RESULT));
-        }
+        const fetch = async () => {
+            const response = await GetQuestionAPI();
+            dispatch(getQuestion(response));
+        };
         fetch();
     }, []);
 
@@ -32,24 +29,13 @@ const SetPage = () => {
                 <Route path="/example">
                     <Example />
                 </Route>
-                <Route path="/test/1">
-                    <PsyTest page="1" />
-                </Route>
-                <Route path="/test/2">
-                    <PsyTest page="2" />
-                </Route>
-                <Route path="/test/3">
-                    <PsyTest page="3" />
-                </Route>
-                <Route path="/test/4">
-                    <PsyTest page="4" />
-                </Route>
-                <Route path="/test/5">
-                    <PsyTest page="5" />
-                </Route>
-                <Route path="/test/6">
-                    <PsyTest page="6" />
-                </Route>
+                {Array.from({ length: 6 }, (v, i) => i + 1).map((page, index) => {
+                    return (
+                        <Route key={index} path={`/test/${page}`}>
+                            <PsyTest page={String(page)} />
+                        </Route>
+                    );
+                })}
                 <Route path="/finish">
                     <Finish />
                 </Route>

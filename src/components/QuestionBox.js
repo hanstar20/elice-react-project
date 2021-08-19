@@ -8,7 +8,6 @@ const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answ
 
     const handleChange = (e) => {
         dispatch(disSetAnswer(e.target.value, questionNum));
-        console.log(answers);
     };
 
     const ExampleDetail = () => {

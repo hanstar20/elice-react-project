@@ -5,7 +5,7 @@ import { init } from '../redux/action';
 
 const Result = () => {
     const dispatch = useDispatch();
-    const result = useSelector((state) => state);
+    const state = useSelector((state) => state);
 
     const handleClick = () => {
         dispatch(init());

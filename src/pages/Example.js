@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import QuestionBox from './QuestionBox';
+import QuestionBox from '../components/QuestionBox';
 
 const Example = () => {
     const sample = useSelector((state) => state.question[0]);

@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { disSetName, disSetGender } from '../redux/action';
+import GenderSelector from '../components/GenderSelector';
+import { useEffect } from 'react';
 
 const GatherInfo = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
+    const state = useSelector((state) => state);
 
+    useEffect(() => {
+        console.log(state);
+    }, []);
     const handleChangeName = (e) => {
         setName(e.target.value);
     };
@@ -27,14 +33,7 @@ const GatherInfo = () => {
             <div>
                 이름
                 <input type="text" onChange={handleChangeName} value={name} />
-                <p>
-                    <input type="radio" value="male" name="gender" onChange={handleChangeGender} />
-                    남자
-                </p>
-                <p>
-                    <input type="radio" value="female" name="gender" onChange={handleChangeGender} />
-                    여자
-                </p>
+                <GenderSelector handleChange={handleChangeGender} />
                 <Link to="/example">
                     <button disabled={name !== '' && gender !== '' ? false : true} onClick={handleClick}>
                         검사시작
