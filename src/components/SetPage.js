@@ -10,20 +10,18 @@ import axios from 'axios';
 import { getQuestion } from '../redux/action';
 
 const API_KEY = 'c4115cd15ddcb05d8a6533b287705c6f';
-const QESTREN_SEQ = '6'
+const QESTREN_SEQ = '6';
 
 const SetPage = () => {
-    
     const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetch() {
-            const response = await axios.get(`https://www.career.go.kr/inspct/openapi/test/questions?apikey=${API_KEY}&q=${QESTREN_SEQ}`)
-            dispatch(getQuestion(response.data.RESULT))
-            console.log(response.data.RESULT)
+            const response = await axios.get(`https://www.career.go.kr/inspct/openapi/test/questions?apikey=${API_KEY}&q=${QESTREN_SEQ}`);
+            dispatch(getQuestion(response.data.RESULT));
         }
         fetch();
-    }, [])
+    }, []);
 
     return (
         <BrowserRouter>
@@ -60,7 +58,7 @@ const SetPage = () => {
                 </Route>
             </Switch>
         </BrowserRouter>
-    )
-}
+    );
+};
 
 export default SetPage;
