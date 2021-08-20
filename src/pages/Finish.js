@@ -29,23 +29,9 @@ const Finish = () => {
             .trim(),
     };
 
-    const test = {
-        apikey: API_KEY,
-        qestrnSeq: QESTREN_SEQ,
-        trgetSe: TARGET,
-        name: 'hihi',
-        gender: MALE,
-        grade: '1',
-        startDtm: Date.now(),
-        //answer array에서 post 할 때 보내줄 양식으로 변환해서 answer로 저장
-        answers:
-            'B1=2 B2=3 B3=6 B4=8 B5=9 B6=11 B7=14 B8=16 B9=17 B10=20 B11=22 B12=24 B13=26 B14=27 B15=30 B16=32 B17=34 B18=36 B19=37 B20=40 B21=42 B22=43 B23=45 B24=48 B25=50 B26=51 B27=54 B28=56',
-    };
-
     useEffect(() => {
         const fetch = async () => {
-            // const response = await GetResultAPI(postAnswer);
-            const response = await GetResultAPI(test);
+            const response = await GetResultAPI(postAnswer);
             const graph = response.data.result.wonScore
                 .split(' ')
                 .splice(0, 8)
@@ -61,9 +47,7 @@ const Finish = () => {
         fetch();
     }, []);
 
-    const handleClick = () => {
-        console.log(state.result.maxValue);
-    };
+    const handleClick = () => {};
 
     return (
         <div>
