@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { disSetAnswer } from '../redux/action';
+import { disSetAnswer, setProgress } from '../redux/action';
 
 const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answer04, answerScore01, answerScore02 }) => {
     const dispatch = useDispatch();
     const answers = useSelector((state) => state.answers);
+    const progress = useSelector((state) => state.progress);
+
+    useEffect(() => {
+        dispatch(setProgress(answers));
+    }, [answers]);
 
     const handleChange = (e) => {
         dispatch(disSetAnswer(e.target.value, questionNum));

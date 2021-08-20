@@ -14,10 +14,8 @@ const Result = () => {
     return (
         <div>
             <h3>직업가치 결과 검사표</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic veniam ratione placeat eius rerum esse vitae quasi quod cupiditate. Officia expedita vel reiciendis doloribus sed beatae
-                dolorem at maxime omnis!
-            </p>
+
+            <p>Loading...</p>
 
             <Link to="/">
                 <button onClick={handleClick}>다시 검사하기</button>

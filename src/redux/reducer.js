@@ -1,8 +1,11 @@
+import { CalProgress } from '../function/Calculate';
+
 const initState = {
     name: '',
     gender: '',
     question: [],
     answers: Array.from({ length: 29 }, () => 'None'),
+    progress: 0,
     result: {
         graph: [],
         jobs: [],
@@ -41,6 +44,12 @@ const Reducer = (state = initState, action) => {
                     }
                 }),
             };
+        case 'test/progress':
+            const progress = CalProgress(action.answers);
+            return {
+                ...state,
+                progress: progress,
+            };
         case 'test/result':
             return {
                 ...state,
@@ -59,6 +68,7 @@ const Reducer = (state = initState, action) => {
                 name: '',
                 gender: '',
                 answers: Array.from({ length: 29 }, () => 'None'),
+                progress: 0,
                 result: {
                     graph: [],
                     jobs: [],

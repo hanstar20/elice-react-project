@@ -20,6 +20,11 @@ export const disSetAnswer = (answer, index) => ({
     index,
 });
 
+export const setProgress = (answers) => ({
+    type: 'test/progress',
+    answers,
+});
+
 export const setResult = (graph, jobs, majors, maxValues, minValues) => ({
     type: 'test/result',
     graph,

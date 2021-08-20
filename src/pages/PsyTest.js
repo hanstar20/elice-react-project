@@ -6,6 +6,7 @@ import QuestionBox from '../components/QuestionBox';
 const PsyTest = ({ page }) => {
     const questions = useSelector((state) => state.question);
     const answers = useSelector((state) => state.answers);
+    const progress = useSelector((state) => state.progress);
     const [pageQ, setPageQ] = useState([]);
     const [complete, setComplete] = useState(false);
 
@@ -38,6 +39,7 @@ const PsyTest = ({ page }) => {
     return (
         <div>
             <p>{page}</p>
+            <p>{progress}</p>
             test 페이지
             <div>
                 {pageQ.map((question, index) => (

@@ -69,3 +69,8 @@ export const findMinIndex = (array) => {
 
     return [min1 + 1, min2 + 1];
 };
+
+export const CalProgress = (array) => {
+    const arr = array.slice(1);
+    return Math.round((arr.filter((e) => e !== 'None').length / arr.length) * 100);
+};
