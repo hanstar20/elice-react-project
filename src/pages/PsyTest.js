@@ -2,6 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import QuestionBox from '../components/QuestionBox';
+import styled, { css } from 'styled-components';
+import { ButtonBasic } from '../components/Styled';
+
+const Button = styled(ButtonBasic)`
+    padding: 8px 60px;
+`;
+
+const ButtonWrapper = styled.div`
+    flex-direction: row-reverse;
+`;
+
+const Container = styled.div`
+    height: 100vh;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
 
 const PsyTest = ({ page }) => {
     const questions = useSelector((state) => state.question);
@@ -37,7 +56,7 @@ const PsyTest = ({ page }) => {
     }, [answers]);
 
     return (
-        <div>
+        <Container>
             <p>{page}</p>
             <p>{progress}</p>
             test 페이지
@@ -56,13 +75,17 @@ const PsyTest = ({ page }) => {
                     />
                 ))}
             </div>
-            <Link to={page === '1' ? '/example' : `/test/${Number(page) - 1}`}>
-                <button>이전</button>
-            </Link>
-            <Link to={page === '6' ? '/finish' : `/test/${Number(page) + 1}`}>
-                <button disabled={complete ? false : true}>다음</button>
-            </Link>
-        </div>
+            <ButtonWrapper>
+                <Link to={page === '1' ? '/example' : `/test/${Number(page) - 1}`}>
+                    <Button>이전</Button>
+                </Link>
+                <Link to={page === '6' ? '/finish' : `/test/${Number(page) + 1}`}>
+                    <Button disabled={complete ? false : true} end>
+                        다음
+                    </Button>
+                </Link>
+            </ButtonWrapper>
+        </Container>
     );
 };
 
