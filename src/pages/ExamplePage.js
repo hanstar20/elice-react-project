@@ -18,7 +18,7 @@ export const Container = styled.div`
     justify-content: center;
 `;
 
-const Example = () => {
+const ExamplePage = () => {
     const sample = useSelector((state) => state.question[0]);
     const answer = useSelector((state) => state.answers[0]);
 
@@ -48,4 +48,4 @@ const Example = () => {
     );
 };
 
-export default Example;
+export default ExamplePage;

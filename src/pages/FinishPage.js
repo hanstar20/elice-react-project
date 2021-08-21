@@ -6,7 +6,7 @@ import { API_KEY, QESTREN_SEQ, MALE, FEMALE, TARGET, GetResultAPI, GetJobsAPI, G
 import { findMaxIndex, findMinIndex } from '../function/Calculate';
 import ResultComment from '../components/ResultComment';
 
-const Finish = () => {
+const FinishPage = () => {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
@@ -65,4 +65,4 @@ const Finish = () => {
     );
 };
 
-export default Finish;
+export default FinishPage;

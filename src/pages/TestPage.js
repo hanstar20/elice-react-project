@@ -22,7 +22,7 @@ const Container = styled.div`
     justify-content: center;
 `;
 
-const PsyTest = ({ page }) => {
+const TestPage = ({ page }) => {
     const questions = useSelector((state) => state.question);
     const answers = useSelector((state) => state.answers);
     const progress = useSelector((state) => state.progress);
@@ -92,4 +92,4 @@ const PsyTest = ({ page }) => {
     );
 };
 
-export default PsyTest;
+export default TestPage;

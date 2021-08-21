@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { init } from '../redux/action';
 
-const Result = () => {
+const ResultPage = () => {
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
@@ -24,4 +24,4 @@ const Result = () => {
     );
 };
 
-export default Result;
+export default ResultPage;

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import GatherInfo from './GatherInfo';
-import Example from './Example';
-import PsyTest from './PsyTest';
-import Finish from './Finish';
-import Result from './Result';
+import GatherInfoPage from './GatherInfoPage';
+import ExamplePage from './ExamplePage';
+import TestPage from './TestPage';
+import FinishPage from './FinishPage';
+import ResultPage from './ResultPage';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getQuestion } from '../redux/action';
@@ -24,23 +24,23 @@ const SetPage = () => {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">
-                    <GatherInfo />
+                    <GatherInfoPage />
                 </Route>
                 <Route path="/example">
-                    <Example />
+                    <ExamplePage />
                 </Route>
                 {Array.from({ length: 6 }, (v, i) => i + 1).map((page, index) => {
                     return (
                         <Route key={index} path={`/test/${page}`}>
-                            <PsyTest page={String(page)} />
+                            <TestPage page={String(page)} />
                         </Route>
                     );
                 })}
                 <Route path="/finish">
-                    <Finish />
+                    <FinishPage />
                 </Route>
                 <Route path="/result">
-                    <Result />
+                    <ResultPage />
                 </Route>
             </Switch>
         </BrowserRouter>

@@ -32,7 +32,7 @@ const Input = styled.input`
 
 const Button = styled(ButtonBasic)``;
 
-const GatherInfo = () => {
+const GatherInfoPage = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
@@ -72,4 +72,4 @@ const GatherInfo = () => {
     );
 };
 
-export default GatherInfo;
+export default GatherInfoPage;
