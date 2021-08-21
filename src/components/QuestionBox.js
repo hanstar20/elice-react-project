@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { disSetAnswer, setProgress } from '../redux/action';
 import styled, { css } from 'styled-components';
+import ExampleDetail from './ExampleDetail';
 
 const Container = styled.div`
     width: 900px;
@@ -41,19 +42,6 @@ const Question = styled.p`
     color: white;
 `;
 
-const Description = styled.p`
-    margin: 3px 0 3px 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-
-    ${({ empty }) =>
-        empty &&
-        css`
-            margin-top: 21.5px;
-        `}
-`;
-
 const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answer04, answerScore01, answerScore02 }) => {
     const dispatch = useDispatch();
     const answers = useSelector((state) => state.answers);
@@ -68,25 +56,6 @@ const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answ
         console.log(state);
     };
 
-    const ExampleDetail = () => {
-        const checked = answers[questionNum];
-        if (checked === answerScore01) {
-            return (
-                <Description>
-                    {answer01}: {answer03}
-                </Description>
-            );
-        } else if (checked === answerScore02) {
-            return (
-                <Description>
-                    {answer02}: {answer04}
-                </Description>
-            );
-        } else {
-            return <Description empty />;
-        }
-    };
-
     return (
         <Container>
             <Question>{`Q${questionNum}. ${question}`}</Question>
@@ -98,7 +67,7 @@ const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answ
                     <input type="radio" value={answerScore02} name={`Question-${questionNum}`} checked={answers[questionNum] === answerScore02 ? true : false} onChange={handleChange} /> {answer02}
                 </Label>
             </InputWrapper>
-            {ExampleDetail()}
+            <ExampleDetail answer={answers[questionNum]} answer01={answer01} answer02={answer02} answer03={answer03} answer04={answer04} answerScore01={answerScore01} answerScore02={answerScore02} />
         </Container>
     );
 };
