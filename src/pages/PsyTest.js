@@ -39,11 +39,14 @@ const PsyTest = ({ page }) => {
             return true;
         }
     };
+
+    const completeChecked = CompleteChecked(5 * (Number(page) - 1) + 1, 5 * Number(page) + 1);
+
     // 페이지가 바뀔때 마다 문제들이 갱신되도록 하는 부분
     useEffect(() => {
         setPageQ(questions.slice(5 * (Number(page) - 1), 5 * Number(page)));
         // page 넘어갈 때마다 page의 결과 값이 모두 들어가 있으면 다음 버튼을 활성화, 아니라면 비활성화
-        if (CompleteChecked(5 * (Number(page) - 1) + 1, 5 * Number(page) + 1)) {
+        if (completeChecked) {
             setComplete(true);
         } else {
             setComplete(false);
@@ -52,7 +55,7 @@ const PsyTest = ({ page }) => {
 
     // 답이 갱신될 때, 5개가 모두 체크되었는지 확인하는 부분
     useEffect(() => {
-        setComplete(CompleteChecked(5 * (Number(page) - 1) + 1, 5 * Number(page) + 1));
+        setComplete(completeChecked);
     }, [answers]);
 
     return (
