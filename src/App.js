@@ -1,12 +1,15 @@
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import './App.css';
-import GatherInfo from './components/GatherInfo';
+import SetPage from './components/SetPage';
 
 
 function App() {
+
   return (
-    <div>
-        <GatherInfo />
-    </div>
+    <Provider store={store}>
+      <SetPage />
+    </Provider>
   );
 }
 
