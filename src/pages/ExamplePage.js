@@ -24,18 +24,16 @@ const ExamplePage = () => {
     return (
         <Container>
             <TitleAndProgress example />
-            <div>
-                <QuestionBox
-                    questionNum="0"
-                    question={sample.question}
-                    answer01={sample.answer01}
-                    answer02={sample.answer02}
-                    answer03={sample.answer03}
-                    answer04={sample.answer04}
-                    answerScore01={sample.answerScore01}
-                    answerScore02={sample.answerScore02}
-                />
-            </div>
+            <QuestionBox
+                questionNum="0"
+                question={sample.question}
+                answer01={sample.answer01}
+                answer02={sample.answer02}
+                answer03={sample.answer03}
+                answer04={sample.answer04}
+                answerScore01={sample.answerScore01}
+                answerScore02={sample.answerScore02}
+            />
             <Link to="/test/1">
                 <Button disabled={answer === 'None' ? true : false}>검사시작</Button>
             </Link>

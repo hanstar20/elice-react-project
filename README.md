@@ -11,3 +11,6 @@
 -   useParams를 이용한 path 동적 동작 적용하기
 -   TitleAndProgress.js 만들어 TitleAndProgress 컴포넌트에 Progress Bar, 퍼센티지, 예시 설명 구현
 -   FinishPage 디자인 작업 완료
+-   ResultPage 디자인 작업
+    -   인적 정보를 표시하는 표 컴포넌트 구현
+    -   직업가치관결과 그래프 컴포넌트 구현

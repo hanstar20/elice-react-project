@@ -64,8 +64,9 @@ const FinishPage = () => {
             const minValues = findMinIndex(graph);
             const jobs = await GetJobsAPI(maxValues);
             const majors = await GetMajorsAPI(maxValues);
+            const time = response.data.inspct.beginDtm.split('T')[0].replace(/-/g, '.');
 
-            dispatch(setResult(graph, jobs, majors, maxValues, minValues));
+            dispatch(setResult(graph, jobs, majors, maxValues, minValues, time));
         };
 
         fetch();
