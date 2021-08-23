@@ -72,6 +72,10 @@ const FinishPage = () => {
         fetch();
     }, []);
 
+    const handleClick = () => {
+        console.log(state.result.jobs);
+    };
+
     return (
         <Container>
             <Title>검사가 완료되었습니다.</Title>
@@ -83,6 +87,7 @@ const FinishPage = () => {
             <Link to="/result">
                 <Button>결과보기</Button>
             </Link>
+            <button onClick={handleClick}>결과 받기</button>
         </Container>
     );
 };
