@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import QuestionBox from '../components/QuestionBox';
+import TitleAndProgress from '../components/TitleAndProgress';
 import styled, { css } from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 
@@ -10,16 +11,17 @@ const Button = styled(ButtonBasic)`
 `;
 
 const ButtonWrapper = styled.div`
-    flex-direction: row-reverse;
+    width: 940px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 const Container = styled.div`
-    height: 100vh;
+    height: 80vh;
     display: flex;
-    align-self: center;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 `;
 
 const TestPage = ({ page }) => {
@@ -60,24 +62,20 @@ const TestPage = ({ page }) => {
 
     return (
         <Container>
-            <p>{page}</p>
-            <p>{progress}</p>
-            test 페이지
-            <div>
-                {pageQ.map((question, index) => (
-                    <QuestionBox
-                        key={index}
-                        questionNum={CalQuestionNum(page, index)}
-                        question={question.question}
-                        answer01={question.answer01}
-                        answer02={question.answer02}
-                        answer03={question.answer03}
-                        answer04={question.answer04}
-                        answerScore01={question.answerScore01}
-                        answerScore02={question.answerScore02}
-                    />
-                ))}
-            </div>
+            <TitleAndProgress />
+            {pageQ.map((question, index) => (
+                <QuestionBox
+                    key={index}
+                    questionNum={CalQuestionNum(page, index)}
+                    question={question.question}
+                    answer01={question.answer01}
+                    answer02={question.answer02}
+                    answer03={question.answer03}
+                    answer04={question.answer04}
+                    answerScore01={question.answerScore01}
+                    answerScore02={question.answerScore02}
+                />
+            ))}
             <ButtonWrapper>
                 <Link to={page === '1' ? '/example' : `/test/${Number(page) - 1}`}>
                     <Button>이전</Button>

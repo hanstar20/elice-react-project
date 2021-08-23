@@ -10,7 +10,7 @@ const Description = styled.p`
     ${({ empty }) =>
         empty &&
         css`
-            margin-top: 21.5px;
+            margin-top: 24px;
         `}
 `;
 
