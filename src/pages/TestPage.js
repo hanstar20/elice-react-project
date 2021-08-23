@@ -81,7 +81,7 @@ const TestPage = ({ page }) => {
                     <Button>이전</Button>
                 </Link>
                 <Link to={page === '6' ? '/finish' : `/test/${Number(page) + 1}`}>
-                    <Button disabled={complete ? false : true} end>
+                    <Button disabled={complete ? false : true} end="true">
                         다음
                     </Button>
                 </Link>

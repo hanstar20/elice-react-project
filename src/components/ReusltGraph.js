@@ -18,14 +18,15 @@ const Table = styled.table`
     border-collapse: collapse;
     border: 1px solid gray;
     z-index: 1;
-
-    > tr {
-        border: 1px solid gray;
-
-        > td {
-            height: 40px;
+    > tbody {
+        > tr {
             border: 1px solid gray;
-            display: table-cell;
+
+            > td {
+                height: 40px;
+                border: 1px solid gray;
+                display: table-cell;
+            }
         }
     }
 `;
@@ -59,36 +60,36 @@ const Value = styled.p`
 
 function CheckedValue({ value, index, maxValues }) {
     if (index === maxValues[0] - 1) {
-        return <Value max>★★{value}</Value>;
+        return <Value max="true">★★{value}</Value>;
     } else if (index === maxValues[1] - 1) {
-        return <Value max>★{value}</Value>;
+        return <Value max="true">★{value}</Value>;
     } else {
         return <Value>{value}</Value>;
     }
 }
 
-function ResultGraph() {
-    const testGraph = [3, 4, 2, 3, 1, 4, 2, 6];
-    const maxValues = [5, 4];
+function ResultGraph({ graph, maxValues }) {
     return (
         <Container>
             <div>
                 <Table>
-                    {Array.from({ length: 10 }, () => 0).map((_, index) => {
-                        return (
-                            <tr key={index}>
-                                {Array.from({ length: 8 }, () => 0).map((_, i) => (
-                                    <td key={i}></td>
-                                ))}
-                            </tr>
-                        );
-                    })}
+                    <tbody>
+                        {Array.from({ length: 10 }, () => 0).map((_, index) => {
+                            return (
+                                <tr key={index}>
+                                    {Array.from({ length: 8 }, () => 0).map((_, i) => (
+                                        <td key={i}></td>
+                                    ))}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
                 </Table>
 
                 <Graph>
-                    {testGraph.map((value, index) => {
+                    {graph.map((value, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 <CheckedValue value={value} index={index} maxValues={maxValues} />
                                 <GraphValue value={value} />
                                 <XAxis>{VALUES[index]}</XAxis>

@@ -37,10 +37,10 @@ const ResultComment = () => {
 
     return (
         <Container>
-            직업생활과 관련하여 <Highlight name>{name}</Highlight>님은 <Highlight max>{VALUES[maxValues[0] - 1]}</Highlight>(와)과 <Highlight max>{VALUES[maxValues[1] - 1]}</Highlight>(을)를 가장
-            중요하게 생각합니다.
+            직업생활과 관련하여 <Highlight name="true">{name}</Highlight>님은 <Highlight max="true">{VALUES[maxValues[0] - 1]}</Highlight>(와)과{' '}
+            <Highlight max="true">{VALUES[maxValues[1] - 1]}</Highlight>(을)를 가장 중요하게 생각합니다.
             <br />
-            반면에 <Highlight min>{VALUES[minValues[0] - 1]}</Highlight>, <Highlight min>{VALUES[minValues[1] - 1]}</Highlight>(는)은 상대적으로 덜 중요하게 생각합니다.
+            반면에 <Highlight min="true">{VALUES[minValues[0] - 1]}</Highlight>, <Highlight min="true">{VALUES[minValues[1] - 1]}</Highlight>(는)은 상대적으로 덜 중요하게 생각합니다.
         </Container>
     );
 };

@@ -41,9 +41,9 @@ const ResultPage = () => {
                 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를
                 제공합니다.
             </Description>
-            <InfoTable />
+            <InfoTable name={state.name} gender={state.gender} time={state.time} />
             <Strapline>직업가치관결과</Strapline>
-            <ResultGraph />
+            <ResultGraph graph={state.result.graph} maxValues={state.result.maxValues} />
             <p>Loading...</p>
             <Link to="/">
                 <button onClick={handleClick}>다시 검사하기</button>
