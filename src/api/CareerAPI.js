@@ -32,7 +32,10 @@ export const GetMajorsAPI = async (result) => {
     const response = await axios.get(`${URL_2}/value/majors?no1=${result[0]}&no2=${result[1]}`);
     const majors = [[], [], [], [], [], [], [], []];
     response.data.forEach(function (major) {
-        majors[major[2] - 1].push(major[1]);
+        majors[major[2]].push(major[1]);
+        if (major[2] !== 0) {
+            majors[0].push(major[1]);
+        }
     });
     return majors;
 };

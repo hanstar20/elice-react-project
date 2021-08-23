@@ -56,6 +56,7 @@ const FinishPage = () => {
     useEffect(() => {
         const fetch = async () => {
             const response = await GetResultAPI(postAnswer);
+            // const response = await GetResultAPI(test);
             const graph = response.data.result.wonScore
                 .split(' ')
                 .splice(0, 8)
@@ -73,7 +74,7 @@ const FinishPage = () => {
     }, []);
 
     const handleClick = () => {
-        console.log(state.result.jobs);
+        console.log(state);
     };
 
     return (

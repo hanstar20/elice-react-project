@@ -5,6 +5,9 @@ import { init } from '../redux/action';
 import InfoTable from '../components/InfoTable';
 import styled from 'styled-components';
 import ResultGraph from '../components/ReusltGraph';
+import ResultJobs from '../components/ResultJobs';
+import ResultMajors from '../components/ResultMajors';
+import { ButtonBasic } from '../components/Styled';
 
 const Container = styled.div`
     height: 100vh;
@@ -23,6 +26,11 @@ const Description = styled.p`
 const Strapline = styled.h2`
     width: 900px;
     margin: 5px 0;
+`;
+
+const Button = styled(ButtonBasic)`
+    padding: 8px 100px;
+    margin-bottom: 100px;
 `;
 
 const ResultPage = () => {
@@ -44,9 +52,11 @@ const ResultPage = () => {
             <InfoTable name={state.name} gender={state.gender} time={state.time} />
             <Strapline>직업가치관결과</Strapline>
             <ResultGraph graph={state.result.graph} maxValues={state.result.maxValues} />
-            <p>Loading...</p>
+            <Strapline>가치관과 관련이 높은 직업</Strapline>
+            <ResultJobs jobs={state.result.jobs} />
+            <ResultMajors majors={state.result.majors} />
             <Link to="/">
-                <button onClick={handleClick}>다시 검사하기</button>
+                <Button onClick={handleClick}>다시 검사하기</Button>
             </Link>
         </Container>
     );
