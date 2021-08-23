@@ -16,15 +16,17 @@ export const TextWrapper = styled.div`
 
 export const BarWrapper = styled.div`
     width: 940px;
-    height: 15px;
+    height: 16px;
     background-color: #dcdcdc;
     margin-bottom: 30px;
+    border-radius: 4px;
 `;
 
 export const Bar = styled.div`
     width: ${(props) => `${(props.progress / 100) * 940}px`};
-    height: 15px;
+    height: 16px;
     background-color: #5f9ea0;
+    border-radius: 4px;
 `;
 
 export const DescriptionWrapper = styled.div`

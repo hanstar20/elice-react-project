@@ -10,3 +10,4 @@
 
 -   useParams를 이용한 path 동적 동작 적용하기
 -   TitleAndProgress.js 만들어 TitleAndProgress 컴포넌트에 Progress Bar, 퍼센티지, 예시 설명 구현
+-   FinishPage 디자인 작업 완료
