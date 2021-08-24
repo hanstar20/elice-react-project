@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { disSetAnswer, setProgress } from '../redux/action';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import ExampleDetail from './ExampleDetail';
 
 const Container = styled.div`
@@ -19,7 +19,10 @@ const Container = styled.div`
 `;
 
 const InputWrapper = styled.div`
-    margin-top: 0;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     font-size: 18px;
 `;
 
@@ -28,10 +31,6 @@ const Label = styled.label`
     > input {
         cursor: pointer;
         margin: 0 3px 13px;
-    }
-
-    + label {
-        margin-left: 150px;
     }
 `;
 
@@ -45,11 +44,10 @@ const Question = styled.p`
 const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answer04, answerScore01, answerScore02 }) => {
     const dispatch = useDispatch();
     const answers = useSelector((state) => state.answers);
-    const state = useSelector((state) => state);
 
     useEffect(() => {
         dispatch(setProgress(answers));
-    }, [answers]);
+    }, [dispatch, answers]);
 
     const handleChange = (e) => {
         dispatch(disSetAnswer(e.target.value, questionNum));
@@ -62,6 +60,7 @@ const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answ
                 <Label>
                     <input type="radio" value={answerScore01} name={`Question-${questionNum}`} checked={answers[questionNum] === answerScore01 ? true : false} onChange={handleChange} /> {answer01}
                 </Label>
+
                 <Label>
                     <input type="radio" value={answerScore02} name={`Question-${questionNum}`} checked={answers[questionNum] === answerScore02 ? true : false} onChange={handleChange} /> {answer02}
                 </Label>

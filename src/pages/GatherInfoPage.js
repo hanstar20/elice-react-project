@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { disSetName, disSetGender } from '../redux/action';
 import GenderSelector from '../components/GenderSelector';
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 
@@ -36,11 +35,7 @@ const GatherInfoPage = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
-    const state = useSelector((state) => state);
 
-    useEffect(() => {
-        console.log(state);
-    }, []);
     const handleChangeName = (e) => {
         setName(e.target.value);
     };
