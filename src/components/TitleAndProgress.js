@@ -27,6 +27,7 @@ export const Bar = styled.div`
     height: 16px;
     background-color: #5f9ea0;
     border-radius: 4px;
+    transition: width ease 0.5s;
 `;
 
 export const DescriptionWrapper = styled.div`

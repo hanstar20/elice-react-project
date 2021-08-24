@@ -29,7 +29,30 @@ const Input = styled.input`
     margin-bottom: 30px;
 `;
 
-const Button = styled(ButtonBasic)``;
+const Tooltip = styled.span`
+    display: none;
+    position: absolute;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 15px;
+    color: white;
+    background: #ff0000;
+`;
+
+const Button = styled(ButtonBasic)`
+    display: inline-block;
+
+    &:hover ${Tooltip} {
+        display: ${(props) => (props.disabled ? 'block' : 'none')};
+    }
+`;
+
+const DisableChecked = (name, gender) => {
+    if (name === '' && gender === '') return '이름을 입력하고 성별을 선택해주세요.';
+    else if (name === '') return '이름을 입력해주세요.';
+    else if (gender === '') return '성별을 선택해주세요.';
+};
 
 const GatherInfoPage = () => {
     const dispatch = useDispatch();
@@ -61,6 +84,7 @@ const GatherInfoPage = () => {
             <Link to="/example">
                 <Button disabled={name !== '' && gender !== '' ? false : true} onClick={handleClick}>
                     검사시작
+                    <Tooltip>{DisableChecked(name, gender)}</Tooltip>
                 </Button>
             </Link>
         </Container>
