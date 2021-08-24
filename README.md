@@ -58,8 +58,9 @@
 
 ### 21/08/24
 
--   Tooltip 만들서 버튼 비활성화 이유 표시하기
--   SideBar 만들기?
+-   GatherInfoPage에서 Tooltip 만들어서 버튼 비활성화 이유 표시하기
+-   react-animated-number를 이용해서 Progress Percent 동적으로 변하기
+-   transition 이용해서 Progress Bar 천천히 변하기
 
 ### 추후 수정해야할 부분
 

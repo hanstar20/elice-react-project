@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import ExampleDetail from './ExampleDetail';
 
 const Container = styled.div`
-    width: 900px;
+    width: 80%;
+    max-width: 900px;
+    min-width: 500px;
     padding: 10px 20px;
     border-radius: 3px;
     border: 1px solid #6a5acd;

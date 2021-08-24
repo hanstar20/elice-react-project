@@ -11,7 +11,9 @@ const Button = styled(ButtonBasic)`
 `;
 
 const ButtonWrapper = styled.div`
-    width: 940px;
+    width: 85%;
+    max-width: 940px;
+    min-width: 540px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
