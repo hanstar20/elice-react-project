@@ -6,6 +6,7 @@ const initState = {
     question: [],
     answers: Array.from({ length: 29 }, () => 'None'),
     progress: 0,
+    time: '',
     result: {
         graph: [],
         jobs: [],
@@ -53,6 +54,7 @@ const Reducer = (state = initState, action) => {
         case 'test/result':
             return {
                 ...state,
+                time: action.time,
                 result: {
                     ...state.result,
                     graph: action.graph,
@@ -69,6 +71,7 @@ const Reducer = (state = initState, action) => {
                 gender: '',
                 answers: Array.from({ length: 29 }, () => 'None'),
                 progress: 0,
+                time: '',
                 result: {
                     graph: [],
                     jobs: [],

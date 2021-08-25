@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { disSetAnswer, setProgress } from '../redux/action';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import ExampleDetail from './ExampleDetail';
 
 const Container = styled.div`
-    width: 900px;
+    width: 80%;
+    max-width: 900px;
+    min-width: 500px;
     padding: 10px 20px;
     border-radius: 3px;
     border: 1px solid #6a5acd;
@@ -18,7 +21,10 @@ const Container = styled.div`
 `;
 
 const InputWrapper = styled.div`
-    margin-top: 0;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     font-size: 18px;
 `;
 
@@ -27,10 +33,6 @@ const Label = styled.label`
     > input {
         cursor: pointer;
         margin: 0 3px 13px;
-    }
-
-    + label {
-        margin-left: 150px;
     }
 `;
 
@@ -41,50 +43,16 @@ const Question = styled.p`
     color: white;
 `;
 
-const Description = styled.p`
-    margin: 3px 0 3px 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-
-    ${({ empty }) =>
-        empty &&
-        css`
-            margin-top: 21.5px;
-        `}
-`;
-
 const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answer04, answerScore01, answerScore02 }) => {
     const dispatch = useDispatch();
     const answers = useSelector((state) => state.answers);
-    const state = useSelector((state) => state);
 
     useEffect(() => {
         dispatch(setProgress(answers));
-    }, [answers]);
+    }, [dispatch, answers]);
 
     const handleChange = (e) => {
         dispatch(disSetAnswer(e.target.value, questionNum));
-        console.log(state);
-    };
-
-    const ExampleDetail = () => {
-        const checked = answers[questionNum];
-        if (checked === answerScore01) {
-            return (
-                <Description>
-                    {answer01}: {answer03}
-                </Description>
-            );
-        } else if (checked === answerScore02) {
-            return (
-                <Description>
-                    {answer02}: {answer04}
-                </Description>
-            );
-        } else {
-            return <Description empty />;
-        }
     };
 
     return (
@@ -94,11 +62,12 @@ const QuestionBox = ({ questionNum, question, answer01, answer02, answer03, answ
                 <Label>
                     <input type="radio" value={answerScore01} name={`Question-${questionNum}`} checked={answers[questionNum] === answerScore01 ? true : false} onChange={handleChange} /> {answer01}
                 </Label>
+
                 <Label>
                     <input type="radio" value={answerScore02} name={`Question-${questionNum}`} checked={answers[questionNum] === answerScore02 ? true : false} onChange={handleChange} /> {answer02}
                 </Label>
             </InputWrapper>
-            {ExampleDetail()}
+            <ExampleDetail answer={answers[questionNum]} answer01={answer01} answer02={answer02} answer03={answer03} answer04={answer04} answerScore01={answerScore01} answerScore02={answerScore02} />
         </Container>
     );
 };

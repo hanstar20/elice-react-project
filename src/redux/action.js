@@ -25,13 +25,14 @@ export const setProgress = (answers) => ({
     answers,
 });
 
-export const setResult = (graph, jobs, majors, maxValues, minValues) => ({
+export const setResult = (graph, jobs, majors, maxValues, minValues, time) => ({
     type: 'test/result',
     graph,
     jobs,
     majors,
     maxValues,
     minValues,
+    time,
 });
 
 export const init = () => ({

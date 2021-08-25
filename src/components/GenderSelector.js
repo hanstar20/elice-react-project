@@ -19,8 +19,6 @@ const Label = styled.label`
     }
 `;
 
-const Input = styled.div``;
-
 const GenderSelector = ({ handleChange }) => {
     return (
         <Container>

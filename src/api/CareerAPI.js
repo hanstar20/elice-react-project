@@ -21,10 +21,21 @@ export const GetResultAPI = async (answer) => {
 
 export const GetJobsAPI = async (result) => {
     const response = await axios.get(`${URL_2}/value/jobs?no1=${result[0]}&no2=${result[1]}`);
-    return response.data;
+    const jobs = [[], [], [], [], []];
+    response.data.forEach(function (job) {
+        jobs[job[2] - 1].push(job[1]);
+    });
+    return jobs;
 };
 
 export const GetMajorsAPI = async (result) => {
     const response = await axios.get(`${URL_2}/value/majors?no1=${result[0]}&no2=${result[1]}`);
-    return response.data;
+    const majors = [[], [], [], [], [], [], [], []];
+    response.data.forEach(function (major) {
+        majors[major[2]].push(major[1]);
+        if (major[2] !== 0) {
+            majors[0].push(major[1]);
+        }
+    });
+    return majors;
 };

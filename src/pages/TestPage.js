@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import QuestionBox from '../components/QuestionBox';
-import styled, { css } from 'styled-components';
+import TitleAndProgress from '../components/TitleAndProgress';
+import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 
 const Button = styled(ButtonBasic)`
@@ -10,22 +11,24 @@ const Button = styled(ButtonBasic)`
 `;
 
 const ButtonWrapper = styled.div`
-    flex-direction: row-reverse;
+    width: 85%;
+    max-width: 940px;
+    min-width: 540px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 const Container = styled.div`
-    height: 100vh;
+    height: 80vh;
     display: flex;
-    align-self: center;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 `;
 
-const PsyTest = ({ page }) => {
+const TestPage = ({ page }) => {
     const questions = useSelector((state) => state.question);
     const answers = useSelector((state) => state.answers);
-    const progress = useSelector((state) => state.progress);
     const [pageQ, setPageQ] = useState([]);
     const [complete, setComplete] = useState(false);
 
@@ -39,48 +42,47 @@ const PsyTest = ({ page }) => {
             return true;
         }
     };
+
+    const completeChecked = CompleteChecked(5 * (Number(page) - 1) + 1, 5 * Number(page) + 1);
+
     // 페이지가 바뀔때 마다 문제들이 갱신되도록 하는 부분
     useEffect(() => {
         setPageQ(questions.slice(5 * (Number(page) - 1), 5 * Number(page)));
         // page 넘어갈 때마다 page의 결과 값이 모두 들어가 있으면 다음 버튼을 활성화, 아니라면 비활성화
-        if (CompleteChecked(5 * (Number(page) - 1) + 1, 5 * Number(page) + 1)) {
+        if (completeChecked) {
             setComplete(true);
         } else {
             setComplete(false);
         }
-    }, [page]);
+    }, [completeChecked, page, questions]);
 
     // 답이 갱신될 때, 5개가 모두 체크되었는지 확인하는 부분
     useEffect(() => {
-        setComplete(CompleteChecked(5 * (Number(page) - 1) + 1, 5 * Number(page) + 1));
-    }, [answers]);
+        setComplete(completeChecked);
+    }, [answers, completeChecked]);
 
     return (
         <Container>
-            <p>{page}</p>
-            <p>{progress}</p>
-            test 페이지
-            <div>
-                {pageQ.map((question, index) => (
-                    <QuestionBox
-                        key={index}
-                        questionNum={CalQuestionNum(page, index)}
-                        question={question.question}
-                        answer01={question.answer01}
-                        answer02={question.answer02}
-                        answer03={question.answer03}
-                        answer04={question.answer04}
-                        answerScore01={question.answerScore01}
-                        answerScore02={question.answerScore02}
-                    />
-                ))}
-            </div>
+            <TitleAndProgress />
+            {pageQ.map((question, index) => (
+                <QuestionBox
+                    key={index}
+                    questionNum={CalQuestionNum(page, index)}
+                    question={question.question}
+                    answer01={question.answer01}
+                    answer02={question.answer02}
+                    answer03={question.answer03}
+                    answer04={question.answer04}
+                    answerScore01={question.answerScore01}
+                    answerScore02={question.answerScore02}
+                />
+            ))}
             <ButtonWrapper>
                 <Link to={page === '1' ? '/example' : `/test/${Number(page) - 1}`}>
                     <Button>이전</Button>
                 </Link>
                 <Link to={page === '6' ? '/finish' : `/test/${Number(page) + 1}`}>
-                    <Button disabled={complete ? false : true} end>
+                    <Button disabled={complete ? false : true} end="true">
                         다음
                     </Button>
                 </Link>
@@ -89,4 +91,4 @@ const PsyTest = ({ page }) => {
     );
 };
 
-export default PsyTest;
+export default TestPage;
