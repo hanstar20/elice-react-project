@@ -17,14 +17,18 @@ const Container = styled.div`
 `;
 
 const Description = styled.p`
-    width: 900px;
+    width: 85%;
+    max-width: 900px;
+    min-width: 500px;
     font-size: 17.5px;
     line-height: 25px;
     margin-bottom: 35px;
 `;
 
 const Strapline = styled.h2`
-    width: 900px;
+    width: 85%;
+    max-width: 900px;
+    min-width: 500px;
     margin: 5px 0;
 `;
 

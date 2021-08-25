@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import QuestionBox from '../components/QuestionBox';
 import TitleAndProgress from '../components/TitleAndProgress';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 
 const Button = styled(ButtonBasic)`
@@ -11,7 +11,9 @@ const Button = styled(ButtonBasic)`
 `;
 
 const ButtonWrapper = styled.div`
-    width: 940px;
+    width: 85%;
+    max-width: 940px;
+    min-width: 540px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,7 +29,6 @@ const Container = styled.div`
 const TestPage = ({ page }) => {
     const questions = useSelector((state) => state.question);
     const answers = useSelector((state) => state.answers);
-    const progress = useSelector((state) => state.progress);
     const [pageQ, setPageQ] = useState([]);
     const [complete, setComplete] = useState(false);
 
@@ -53,12 +54,12 @@ const TestPage = ({ page }) => {
         } else {
             setComplete(false);
         }
-    }, [page]);
+    }, [completeChecked, page, questions]);
 
     // 답이 갱신될 때, 5개가 모두 체크되었는지 확인하는 부분
     useEffect(() => {
         setComplete(completeChecked);
-    }, [answers]);
+    }, [answers, completeChecked]);
 
     return (
         <Container>

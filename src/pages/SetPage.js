@@ -18,7 +18,7 @@ const SetPage = () => {
             dispatch(getQuestion(response));
         };
         fetch();
-    }, []);
+    }, [dispatch]);
 
     return (
         <BrowserRouter>

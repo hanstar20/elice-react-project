@@ -1,47 +1,67 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import AnimatedNumber from 'react-animated-number';
 
-export const Container = styled.div`
+const Container = styled.div`
+    width: 85%;
+    max-width: 940px;
+    min-width: 540px;
     display: flex;
     flex-direction: column;
 `;
 
-export const TextWrapper = styled.div`
-    width: 940px;
+const TextWrapper = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 `;
 
-export const BarWrapper = styled.div`
-    width: 940px;
+const BarWrapper = styled.div`
+    width: 100%;
     height: 16px;
     background-color: #dcdcdc;
     margin-bottom: 30px;
     border-radius: 4px;
 `;
 
-export const Bar = styled.div`
-    width: ${(props) => `${(props.progress / 100) * 940}px`};
+const Bar = styled.div`
+    width: ${(props) => `${props.progress}%`};
     height: 16px;
     background-color: #5f9ea0;
     border-radius: 4px;
+    transition: width ease 0.5s;
 `;
 
-export const DescriptionWrapper = styled.div`
+const DescriptionWrapper = styled.div`
     width: 940px;
     margin: 10px 0 20px 0;
 `;
 
+const Number = styled(AnimatedNumber)`
+    transition: 0.3s ease-out;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+`;
+
 function TitleAndProgress({ example }) {
     const progress = useSelector((state) => state.progress);
+    const [percent, setPercent] = useState(0);
 
+    useEffect(() => {
+        setPercent(progress);
+    }, [progress]);
     return (
         <Container>
             <TextWrapper>
                 <h2>{example === true ? '검사예시' : '검사진행'}</h2>
-                <h2>{progress}%</h2>
+                <Number value={percent} stepPrecision={0} formatValue={(n) => `${n}%`} />
             </TextWrapper>
             <BarWrapper>
                 <Bar progress={progress} />
