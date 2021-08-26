@@ -39,7 +39,10 @@ const Button = styled(ButtonBasic)`
 
 const ResultPage = () => {
     const dispatch = useDispatch();
-    const state = useSelector((state) => state);
+    const name = useSelector((state) => state.name);
+    const gender = useSelector((state) => state.gender);
+    const time = useSelector((state) => state.time);
+    const result = useSelector((state) => state.result);
 
     const handleClick = () => {
         dispatch(init());
@@ -53,12 +56,12 @@ const ResultPage = () => {
                 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를
                 제공합니다.
             </Description>
-            <InfoTable name={state.name} gender={state.gender} time={state.time} />
+            <InfoTable name={name} gender={gender} time={time} />
             <Strapline>직업가치관결과</Strapline>
-            <ResultGraph graph={state.result.graph} maxValues={state.result.maxValues} />
+            <ResultGraph graph={result.graph} maxValues={result.maxValues} />
             <Strapline>가치관과 관련이 높은 직업</Strapline>
-            <ResultJobs jobs={state.result.jobs} />
-            <ResultMajors majors={state.result.majors} />
+            <ResultJobs jobs={result.jobs} />
+            <ResultMajors majors={result.majors} />
             <Link to="/">
                 <Button onClick={handleClick}>다시 검사하기</Button>
             </Link>

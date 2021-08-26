@@ -30,10 +30,9 @@ const Highlight = styled.span`
 `;
 
 const ResultComment = () => {
-    const state = useSelector((state) => state);
-    const maxValues = state.result.maxValues;
-    const minValues = state.result.minValues;
-    const name = state.name;
+    const name = useSelector((state) => state.name);
+    const maxValues = useSelector((state) => state.result.maxValues);
+    const minValues = useSelector((state) => state.result.minValues);
 
     return (
         <Container>

@@ -32,18 +32,20 @@ export const ResultDescription = styled.h3`
 
 const FinishPage = () => {
     const dispatch = useDispatch();
-    const state = useSelector((state) => state);
+    const name = useSelector((state) => state.name);
+    const gender = useSelector((state) => state.gender);
+    const answers = useSelector((state) => state.answers);
 
     const postAnswer = {
         apikey: API_KEY,
         qestrnSeq: QESTREN_SEQ,
         trgetSe: TARGET,
-        name: state.name,
-        gender: state.gender === 'male' ? MALE : FEMALE,
+        name: name,
+        gender: gender === 'male' ? MALE : FEMALE,
         grade: '1',
         startDtm: Date.now(),
         //answer array에서 post 할 때 보내줄 양식으로 변환해서 answer로 저장
-        answers: state.answers
+        answers: answers
             .map((answer, index) => {
                 if (index > 0) {
                     return `B${Number(index)}=${answer}`;
