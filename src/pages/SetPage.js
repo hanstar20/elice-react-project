@@ -5,21 +5,8 @@ import FinishPage from './FinishPage';
 import ResultPage from './ResultPage';
 import TestPath from '../components/TestPath';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getQuestion } from '../redux/action';
-import { GetQuestionAPI } from '../api/CareerAPI';
 
 const SetPage = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const fetch = async () => {
-            const response = await GetQuestionAPI();
-            dispatch(getQuestion(response));
-        };
-        fetch();
-    }, [dispatch]);
-
     return (
         <BrowserRouter>
             <Switch>

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { disSetName, disSetGender } from '../redux/action';
 import GenderSelector from '../components/GenderSelector';
 import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
+import { getQuestion } from '../redux/action';
+import { GetQuestionAPI } from '../api/CareerAPI';
 
 export const Container = styled.div`
     height: 70vh;
@@ -58,6 +60,14 @@ const GatherInfoPage = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
+
+    useEffect(() => {
+        const fetch = async () => {
+            const response = await GetQuestionAPI();
+            dispatch(getQuestion(response));
+        };
+        fetch();
+    }, [dispatch]);
 
     const handleChangeName = (e) => {
         setName(e.target.value);

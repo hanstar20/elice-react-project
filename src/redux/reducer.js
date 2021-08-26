@@ -65,23 +65,7 @@ const Reducer = (state = initState, action) => {
                 },
             };
         case 'init':
-            return {
-                ...state,
-                name: '',
-                gender: '',
-                answers: Array.from({ length: 29 }, () => 'None'),
-                progress: 0,
-                time: '',
-                result: {
-                    graph: [],
-                    jobs: [],
-                    majors: [],
-                    maxValues: [],
-                    minValues: [],
-                },
-            };
-        // 케이스에 해당하지 않을때 반환할 기본값
-        // return state : 아무것도 변경되지 않는다는 뜻
+            return initState;
         default:
             return state;
     }
