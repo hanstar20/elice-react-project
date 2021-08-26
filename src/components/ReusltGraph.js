@@ -2,62 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { VALUES } from '../function/DrawResult';
 
-const Container = styled.div`
-    width: 900px;
-    height: 600px;
-`;
-
-const XAxis = styled.p`
-    margin-top: 10px;
-    text-align: center;
-`;
-
-const Table = styled.table`
-    position: absolute;
-    width: 900px;
-    border-collapse: collapse;
-    border: 1px solid gray;
-    z-index: 1;
-    > tbody {
-        > tr {
-            border: 1px solid gray;
-
-            > td {
-                height: 40px;
-                border: 1px solid gray;
-                display: table-cell;
-            }
-        }
-    }
-`;
-
-const Graph = styled.ul`
-    height: 475px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    list-style: none;
-    padding: 0px;
-    z-index: 2;
-
-    > li {
-        padding: 0 10px;
-    }
-`;
-
-const GraphValue = styled.div`
-    height: ${(props) => `${props.value * 43}px`};
-    width: 70px;
-    background: #b1adf4;
-`;
-
-const Value = styled.p`
-    color: ${(props) => (props.max ? '#6a5acd' : 'black')};
-    font-size: 15px;
-    margin-bottom: 0;
-    text-align: center;
-`;
-
 function CheckedValue({ value, index, maxValues }) {
     if (index === maxValues[0] - 1) {
         return <Value max="true">★★{value}</Value>;
@@ -103,3 +47,62 @@ function ResultGraph({ graph, maxValues }) {
 }
 
 export default ResultGraph;
+
+const Container = styled.div`
+    width: 900px;
+    height: 600px;
+`;
+
+const XAxis = styled.p`
+    margin-top: 10px;
+    text-align: center;
+`;
+
+const Table = styled.table`
+    width: 900px;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    z-index: 1;
+    > tbody {
+        > tr {
+            border: 1px solid gray;
+
+            > td {
+                height: 40px;
+                border: 1px solid gray;
+                display: table-cell;
+            }
+        }
+    }
+`;
+
+const Graph = styled.ul`
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 56px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    list-style: none;
+    padding: 0px;
+    z-index: 2;
+
+    > li {
+        padding: 0 10px;
+    }
+`;
+
+const GraphValue = styled.div`
+    height: ${(props) => `${props.value * 43}px`};
+    width: 70px;
+    background: #b1adf4;
+`;
+
+const Value = styled.p`
+    color: ${(props) => (props.max ? '#6a5acd' : 'black')};
+    font-size: 15px;
+    margin-bottom: 0;
+    text-align: center;
+`;

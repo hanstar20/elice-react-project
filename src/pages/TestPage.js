@@ -6,26 +6,6 @@ import TitleAndProgress from '../components/TitleAndProgress';
 import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 
-const Button = styled(ButtonBasic)`
-    padding: 8px 60px;
-`;
-
-const ButtonWrapper = styled.div`
-    width: 85%;
-    max-width: 940px;
-    min-width: 540px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
-const Container = styled.div`
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
 const TestPage = ({ page }) => {
     const questions = useSelector((state) => state.question);
     const answers = useSelector((state) => state.answers);
@@ -92,3 +72,24 @@ const TestPage = ({ page }) => {
 };
 
 export default TestPage;
+
+const Button = styled(ButtonBasic)`
+    padding: 8px 60px;
+`;
+
+const ButtonWrapper = styled.div`
+    width: 85%;
+    max-width: 940px;
+    min-width: 540px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+const Container = styled.div`
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 400px;
+`;

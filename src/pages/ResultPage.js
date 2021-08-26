@@ -9,34 +9,6 @@ import ResultJobs from '../components/ResultJobs';
 import ResultMajors from '../components/ResultMajors';
 import { ButtonBasic } from '../components/Styled';
 
-const Container = styled.div`
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const Description = styled.p`
-    width: 85%;
-    max-width: 900px;
-    min-width: 500px;
-    font-size: 17.5px;
-    line-height: 25px;
-    margin-bottom: 35px;
-`;
-
-const Strapline = styled.h2`
-    width: 85%;
-    max-width: 900px;
-    min-width: 500px;
-    margin: 5px 0;
-`;
-
-const Button = styled(ButtonBasic)`
-    padding: 8px 100px;
-    margin-bottom: 100px;
-`;
-
 const ResultPage = () => {
     const dispatch = useDispatch();
     const name = useSelector((state) => state.name);
@@ -70,3 +42,31 @@ const ResultPage = () => {
 };
 
 export default ResultPage;
+
+const Container = styled.div`
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Description = styled.p`
+    width: 85%;
+    max-width: 900px;
+    min-width: 500px;
+    font-size: 17.5px;
+    line-height: 25px;
+    margin-bottom: 35px;
+`;
+
+const Strapline = styled.h2`
+    width: 85%;
+    max-width: 900px;
+    min-width: 500px;
+    margin: 5px 0;
+`;
+
+const Button = styled(ButtonBasic)`
+    padding: 8px 100px;
+    margin-bottom: 100px;
+`;

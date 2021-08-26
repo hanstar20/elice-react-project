@@ -2,6 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import { MAJORS } from '../function/DrawResult';
 
+function ResultMajors({ majors }) {
+    return (
+        <Container>
+            <TitleWrapper>종사자 평균 전공별</TitleWrapper>
+            <Table>
+                <thead>
+                    <Tr>
+                        <FristTh>분야</FristTh>
+                        <Th>직업명</Th>
+                    </Tr>
+                </thead>
+                <tbody>
+                    {majors.map((major, index) => {
+                        if (major.length !== 0) {
+                            return (
+                                <Tr key={index}>
+                                    <FristTd>{MAJORS[index]}</FristTd>
+                                    <Td>{major.join(', ')}</Td>
+                                </Tr>
+                            );
+                        }
+                    })}
+                </tbody>
+            </Table>
+        </Container>
+    );
+}
+
+export default ResultMajors;
+
 const Container = styled.div`
     margin: 20px 0 30px 0;
 `;
@@ -51,33 +81,3 @@ const TitleWrapper = styled.div`
     margin-bottom: 20px;
     border-radius: 8px;
 `;
-
-function ResultMajors({ majors }) {
-    return (
-        <Container>
-            <TitleWrapper>종사자 평균 전공별</TitleWrapper>
-            <Table>
-                <thead>
-                    <Tr>
-                        <FristTh>분야</FristTh>
-                        <Th>직업명</Th>
-                    </Tr>
-                </thead>
-                <tbody>
-                    {majors.map((major, index) => {
-                        if (major.length !== 0) {
-                            return (
-                                <Tr key={index}>
-                                    <FristTd>{MAJORS[index]}</FristTd>
-                                    <Td>{major.join(', ')}</Td>
-                                </Tr>
-                            );
-                        }
-                    })}
-                </tbody>
-            </Table>
-        </Container>
-    );
-}
-
-export default ResultMajors;

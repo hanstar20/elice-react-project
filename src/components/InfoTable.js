@@ -1,6 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
+function InfoTable({ name, gender, time }) {
+    return (
+        <Container>
+            <Table>
+                <thead>
+                    <Tr>
+                        <Th>이름</Th>
+                        <Th>성별</Th>
+                        <Th>검사일</Th>
+                    </Tr>
+                </thead>
+                <tbody>
+                    <Tr>
+                        <Td>{name}</Td>
+                        <Td>{gender === 'male' ? '남' : '여'}</Td>
+                        <Td>{time}</Td>
+                    </Tr>
+                </tbody>
+            </Table>
+        </Container>
+    );
+}
+
+export default InfoTable;
+
 const Container = styled.div`
     margin-bottom: 30px;
 `;
@@ -31,28 +56,3 @@ const Td = styled.td`
     text-align: left;
     padding: 0 10px;
 `;
-
-function InfoTable({ name, gender, time }) {
-    return (
-        <Container>
-            <Table>
-                <thead>
-                    <Tr>
-                        <Th>이름</Th>
-                        <Th>성별</Th>
-                        <Th>검사일</Th>
-                    </Tr>
-                </thead>
-                <tbody>
-                    <Tr>
-                        <Td>{name}</Td>
-                        <Td>{gender === 'male' ? '남' : '여'}</Td>
-                        <Td>{time}</Td>
-                    </Tr>
-                </tbody>
-            </Table>
-        </Container>
-    );
-}
-
-export default InfoTable;

@@ -6,17 +6,6 @@ import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 import TitleAndProgress from '../components/TitleAndProgress';
 
-const Button = styled(ButtonBasic)`
-    padding: 8px 100px;
-`;
-
-export const Container = styled.div`
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
 const ExamplePage = () => {
     const sample = useSelector((state) => state.question[0]);
     const answer = useSelector((state) => state.answers[0]);
@@ -42,3 +31,14 @@ const ExamplePage = () => {
 };
 
 export default ExamplePage;
+
+const Button = styled(ButtonBasic)`
+    padding: 8px 100px;
+`;
+
+const Container = styled.div`
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;

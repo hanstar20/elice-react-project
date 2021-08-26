@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import GatherInfoPage from './GatherInfoPage';
 import ExamplePage from './ExamplePage';
 import FinishPage from './FinishPage';

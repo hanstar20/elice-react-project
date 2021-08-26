@@ -8,48 +8,6 @@ import { ButtonBasic } from '../components/Styled';
 import { getQuestion } from '../redux/action';
 import { GetQuestionAPI } from '../api/CareerAPI';
 
-export const Container = styled.div`
-    height: 70vh;
-    display: flex;
-    align-self: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`;
-
-const NameInputWrapper = styled.div`
-    font-size: 12px;
-`;
-
-const Title = styled.h1`
-    margin-bottom: 50px;
-`;
-
-const Input = styled.input`
-    width: 170px;
-    height: 25px;
-    margin-bottom: 30px;
-`;
-
-const Tooltip = styled.span`
-    display: none;
-    position: absolute;
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 15px;
-    color: white;
-    background: #ff0000;
-`;
-
-const Button = styled(ButtonBasic)`
-    display: inline-block;
-
-    &:hover ${Tooltip} {
-        display: ${(props) => (props.disabled ? 'block' : 'none')};
-    }
-`;
-
 const DisableChecked = (name, gender) => {
     if (name === '' && gender === '') return '이름을 입력하고 성별을 선택해주세요.';
     else if (name === '') return '이름을 입력해주세요.';
@@ -77,6 +35,14 @@ const GatherInfoPage = () => {
         setGender(e.target.value);
     };
 
+    const genderChecked = (select) => {
+        if (gender === select) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     const handleClick = () => {
         dispatch(disSetName(name));
         dispatch(disSetGender(gender));
@@ -90,7 +56,7 @@ const GatherInfoPage = () => {
                 <br />
                 <Input type="text" onChange={handleChangeName} value={name} />
             </NameInputWrapper>
-            <GenderSelector handleChange={handleChangeGender} />
+            <GenderSelector handleChange={handleChangeGender} genderChecked={genderChecked} />
             <Link to="/example">
                 <Button disabled={name !== '' && gender !== '' ? false : true} onClick={handleClick}>
                     검사시작
@@ -102,3 +68,47 @@ const GatherInfoPage = () => {
 };
 
 export default GatherInfoPage;
+
+const Container = styled.div`
+    height: 70vh;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const NameInputWrapper = styled.div`
+    font-size: 12px;
+`;
+
+const Title = styled.h1`
+    margin-bottom: 50px;
+`;
+
+const Input = styled.input`
+    width: 160px;
+    height: 35px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    padding: 0 0 0 10px;
+`;
+
+const Tooltip = styled.span`
+    display: none;
+    position: absolute;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 15px;
+    color: white;
+    background: #ff0000;
+`;
+
+const Button = styled(ButtonBasic)`
+    display: inline-block;
+
+    &:hover ${Tooltip} {
+        display: ${(props) => (props.disabled ? 'block' : 'none')};
+    }
+`;

@@ -2,6 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import { JOBS } from '../function/DrawResult';
 
+function ResultJobs({ jobs }) {
+    return (
+        <Container>
+            <TitleWrapper>종사자 평균 학력별</TitleWrapper>
+            <Table>
+                <thead>
+                    <Tr>
+                        <FristTh>분야</FristTh>
+                        <Th>직업명</Th>
+                    </Tr>
+                </thead>
+                <tbody>
+                    {jobs.map((job, index) => {
+                        if (job.length !== 0) {
+                            return (
+                                <Tr key={index}>
+                                    <FristTd>{JOBS[index]}</FristTd>
+                                    <Td>{job.join(', ')}</Td>
+                                </Tr>
+                            );
+                        }
+                    })}
+                </tbody>
+            </Table>
+        </Container>
+    );
+}
+
+export default ResultJobs;
+
 const Container = styled.div`
     margin: 20px 0 30px 0;
 `;
@@ -51,33 +81,3 @@ const TitleWrapper = styled.div`
     margin-bottom: 20px;
     border-radius: 8px;
 `;
-
-function ResultJobs({ jobs }) {
-    return (
-        <Container>
-            <TitleWrapper>종사자 평균 학력별</TitleWrapper>
-            <Table>
-                <thead>
-                    <Tr>
-                        <FristTh>분야</FristTh>
-                        <Th>직업명</Th>
-                    </Tr>
-                </thead>
-                <tbody>
-                    {jobs.map((job, index) => {
-                        if (job.length !== 0) {
-                            return (
-                                <Tr key={index}>
-                                    <FristTd>{JOBS[index]}</FristTd>
-                                    <Td>{job.join(', ')}</Td>
-                                </Tr>
-                            );
-                        }
-                    })}
-                </tbody>
-            </Table>
-        </Container>
-    );
-}
-
-export default ResultJobs;

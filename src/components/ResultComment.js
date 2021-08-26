@@ -3,32 +3,6 @@ import { useSelector } from 'react-redux';
 import { VALUES } from '../function/DrawResult';
 import styled from 'styled-components';
 
-const Container = styled.div`
-    text-align: center;
-    font-size: 18px;
-    line-height: 30px;
-    margin: 10px 0 50px 0;
-    border: 2px solid #6a5acd;
-    border-radius: 5px;
-    padding: 30px 60px;
-    background-color: #b1adf4;
-    color: white;
-`;
-
-const Highlight = styled.span`
-    font-weight: bold;
-    font-size: 20px;
-    color: ${(props) => {
-        if (props.name) {
-            return '#6a5acd';
-        } else if (props.max) {
-            return '#7FFF00';
-        } else if (props.min) {
-            return '#800000';
-        }
-    }};
-`;
-
 const ResultComment = () => {
     const name = useSelector((state) => state.name);
     const maxValues = useSelector((state) => state.result.maxValues);
@@ -45,3 +19,29 @@ const ResultComment = () => {
 };
 
 export default ResultComment;
+
+const Container = styled.div`
+    text-align: center;
+    font-size: 18px;
+    line-height: 30px;
+    margin: 10px 0 50px 0;
+    border: 2px solid #6a5acd;
+    border-radius: 5px;
+    padding: 30px 60px;
+    background-color: #f6f6f6;
+    color: black;
+`;
+
+const Highlight = styled.span`
+    font-weight: bold;
+    font-size: 20px;
+    color: ${(props) => {
+        if (props.name) {
+            return '#6a5acd';
+        } else if (props.max) {
+            return '#00008B';
+        } else if (props.min) {
+            return '#800000';
+        }
+    }};
+`;

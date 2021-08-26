@@ -8,28 +8,6 @@ import ResultComment from '../components/ResultComment';
 import styled from 'styled-components';
 import { ButtonBasic } from '../components/Styled';
 
-export const Container = styled.div`
-    height: 70vh;
-    display: flex;
-    align-self: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`;
-
-const Button = styled(ButtonBasic)`
-    padding: 8px 80px;
-`;
-
-export const Title = styled.h1`
-    color: #6a5acd;
-`;
-
-export const ResultDescription = styled.h3`
-    text-align: center;
-    line-height: 25px;
-`;
-
 const FinishPage = () => {
     const dispatch = useDispatch();
     const name = useSelector((state) => state.name);
@@ -91,3 +69,25 @@ const FinishPage = () => {
 };
 
 export default FinishPage;
+
+const Container = styled.div`
+    height: 70vh;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Button = styled(ButtonBasic)`
+    padding: 8px 80px;
+`;
+
+export const Title = styled.h1`
+    color: #6a5acd;
+`;
+
+export const ResultDescription = styled.h3`
+    text-align: center;
+    line-height: 25px;
+`;
