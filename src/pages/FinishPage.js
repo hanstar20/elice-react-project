@@ -71,6 +71,7 @@ const FinishPage = () => {
 export default FinishPage;
 
 const Container = styled.div`
+    font-family: 'Elice Digital Baeum', sans-serif;
     height: 70vh;
     display: flex;
     align-self: center;

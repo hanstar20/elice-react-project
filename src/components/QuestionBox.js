@@ -41,8 +41,8 @@ const Container = styled.div`
     min-width: 500px;
     padding: 10px 20px;
     border-radius: 3px;
-    border: 3px solid #6a5acd;
-    background-color: #f6f6f6;
+    border: 2px solid #6a5acd;
+    background-color: #b1adf4;
     display: flex;
     align-self: center;
     flex-direction: column;
@@ -59,6 +59,7 @@ const InputWrapper = styled.div`
 `;
 
 const Label = styled.label`
+    font-family: 'Elice Digital Baeum', sans-serif;
     cursor: pointer;
     width: 200px;
     box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -69,7 +70,6 @@ const Label = styled.label`
     display: inline-block;
     cursor: pointer;
     color: #6a5acd;
-    font-family: Arial;
     font-size: 16px;
     padding: 8px 10px;
     text-align: center;
@@ -95,5 +95,4 @@ const Label = styled.label`
 const Question = styled.p`
     margin: 10px 0 10px 0;
     font-size: 20px;
-    font-weight: bold;
 `;

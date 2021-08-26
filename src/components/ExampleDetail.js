@@ -16,7 +16,6 @@ export default ExampleDetail;
 const Description = styled.p`
     margin: 10px 0 10px 0;
     font-size: 18px;
-    font-weight: bold;
 
     ${({ empty }) =>
         empty &&

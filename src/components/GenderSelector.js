@@ -46,7 +46,7 @@ const Label = styled.label`
     display: inline-block;
     cursor: pointer;
     color: #6a5acd;
-    font-family: Arial;
+    font-family: 'Elice Digital Baeum', sans-serif;
     font-size: 16px;
     padding: 8px 10px;
     text-align: center;

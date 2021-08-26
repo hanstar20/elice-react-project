@@ -87,6 +87,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Container = styled.div`
+    font-family: 'Elice Digital Baeum', sans-serif;
     height: 80vh;
     display: flex;
     flex-direction: column;

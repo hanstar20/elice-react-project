@@ -70,6 +70,7 @@ const GatherInfoPage = () => {
 export default GatherInfoPage;
 
 const Container = styled.div`
+    font-family: 'Elice Digital Baeum', sans-serif;
     height: 70vh;
     display: flex;
     align-self: center;
@@ -87,6 +88,7 @@ const Title = styled.h1`
 `;
 
 const Input = styled.input`
+    font-family: 'Elice Digital Baeum', sans-serif;
     width: 160px;
     height: 35px;
     margin-bottom: 30px;

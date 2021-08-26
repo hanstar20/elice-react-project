@@ -44,6 +44,7 @@ const ResultPage = () => {
 export default ResultPage;
 
 const Container = styled.div`
+    font-family: 'Elice Digital Baeum', sans-serif;
     height: 100vh;
     display: flex;
     flex-direction: column;

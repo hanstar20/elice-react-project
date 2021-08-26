@@ -81,7 +81,7 @@ const Graph = styled.ul`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 56px;
+    height: 67px;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
